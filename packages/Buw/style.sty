@@ -1,0 +1,120 @@
+\ProvidesPackage{packages/Buw/style}
+
+\university{Bauhaus-Universtität Weimar}
+\universitycity{Weimar}
+\universitystate{Deutschland}
+
+\definecolor{SchoolColor}{RGB}{163, 163, 163}
+\definecolor{chaptergrey}{RGB}{163, 163, 163}
+% \definecolor{grey}{RGB}{145, 145, 145}
+
+\hypersetup{
+    colorlinks,
+    citecolor=SchoolColor,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=SchoolColor,
+}
+
+\renewcommand{\frontmatter}{
+
+}
+
+\renewcommand{\maketitle}{
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\vspace{100pt}
+	\begin{center}
+	\Huge \textcolor{SchoolColor}{\thetitle} \\
+	\vspace{20pt}
+	\LARGE \textcolor{SchoolColor}{\@subtitle} \normalsize\\
+	\vspace{70pt}
+	
+	Dissertation \\
+
+	\vspace{12pt}
+
+	zur Erlangung des akademischen Grades\\
+	\@degree\\
+
+	\vspace{12pt}
+
+	an der Fakultät \@department\\
+	der\\
+	\@university\\
+
+	\vspace{12pt}
+
+	vorgelegt von\\
+	\theauthor\\
+	geb. 19. September 1985\\
+	Weimar, 2015\\
+	
+	\vspace{12pt}
+
+	Betreut von  \\
+	\@advisor
+
+	\end{center}
+}
+
+\newcommand{\emptypage}{
+	\newpage
+	\null
+	\thispagestyle{empty}
+	\newpage
+}
+\newcommand{\dedicationpage}{
+	\newpage \thispagestyle{empty}
+	\hspace{100pt}
+	\begin{flushright}
+	\scshape \noindent \input{frontmatter/dedication}
+	\end{flushright} \vspace*{\fill}
+	\newpage \rm
+}
+
+
+
+\newcommand{\abstractpage}{
+	\newpage
+	\addcontentsline{toc}{chapter}{Zusammenfassung}
+	\pagestyle{fancy}
+	\lhead{Betreut von: \\\@advisor} \rhead{\@author}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\vspace*{35pt}
+	\begin{center}
+	\Large \textcolor{SchoolColor}{\@title} \normalsize \\
+	\vspace*{20pt}
+	\scshape Zusammenfassung \\ \rm
+	\end{center}
+	\input{frontmatter/abstract}
+	\newpage \lhead{} \rhead{}
+}
+\newcommand{\abbreviations}{
+	\newpage
+	\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+	\chapter*{Abkürzungsverzeichnis}
+	\noindent
+	\input{frontmatter/abbreviations}
+	\vspace*{\fill} \newpage
+}
+
+
+
+\newcommand{\acknowledgments}{
+	\newpage
+	\addcontentsline{toc}{chapter}{Danksagungen}
+	\chapter*{Danksagungen}
+	\noindent
+	\input{frontmatter/acknowledgements}
+	\vspace*{\fill} \newpage
+}
+\newcommand{\declaration}{
+	\addcontentsline{toc}{chapter}{Ehrenwörtliche Erklärung}
+	\chapter*{Ehrenwörtliche Erklärung}
+	\noindent
+	\input{frontmatter/declaration}
+	\vspace*{\fill} \newpage
+}
+
+

@@ -1,0 +1,163 @@
+
+\documentclass[School=Buw]{Dissertate}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+\usepackage[]{acronym}
+\usepackage[german]{babel}
+%\usepackage[T1]{fontenc}
+
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+\usepackage[rgb,dvipsnames]{xcolor}
+
+% code fragments in text
+\usepackage{listings}
+\lstset{language=HTML}
+
+% for later setup
+% \inputpaths{dir1,...,dirN}
+
+
+% allow footcite in figures
+\usepackage{footnote}
+\makesavenoteenv{figure}
+
+% et al. instead of u.a.
+\DefineBibliographyStrings{german}{
+   andothers = {{et\,al\adddot}},
+}
+
+
+
+\newlength\maxHeight
+\setlength\maxHeight\textheight
+\addtolength\maxHeight{-3cm}
+
+
+
+
+
+\definecolor{extralight}{rgb}{0.91,0.91,0.91}
+\newcommand{\textbox}[1]{{
+	\vskip15pt
+	\noindent\colorbox{extralight}{\parbox{\textwidth}{
+	  \vskip20pt
+	  \leftskip20pt\rightskip20pt
+	  	#1
+	  \vskip20pt
+	}}
+	\vskip15pt
+}}
+
+
+
+\usepackage{longtable}
+
+
+
+
+
+
+%%%%********************************************************************
+% fancy quotes for two columns
+\definecolor{quotemark}{gray}{0.7}
+\makeatletter
+\def\fquote{%
+    \@ifnextchar[{\fquote@i}{\fquote@i[]}%]
+           }%
+\def\fquote@i[#1]{%
+    \def\tempa{#1}%
+    \@ifnextchar[{\fquote@ii}{\fquote@ii[]}%]
+                 }%
+\def\fquote@ii[#1]{%
+    \def\tempb{#1}%
+    \@ifnextchar[{\fquote@iii}{\fquote@iii[]}%]
+                      }%
+\def\fquote@iii[#1]{%
+    \def\tempc{#1}%
+    \vspace{1em}%
+    \noindent%
+    \begin{list}{}{%
+         \setlength{\leftmargin}{0.05\textwidth}%
+         \setlength{\rightmargin}{0.10\textwidth}%
+                  }%
+         \item[]%
+         \begin{picture}(0,0)%
+         \put(-15,-5){\makebox(0,0){\scalebox{3}{\textcolor{quotemark}{``}}}}%
+         \end{picture}%
+         \begingroup\itshape}
+ \def\endfquote{%
+ \endgroup\par%
+ \makebox[0pt][l]{%
+ \hspace{0.8\textwidth}%
+ \begin{picture}(0,0)(0,0)%
+ \put(45,15){\makebox(0,0){ \scalebox{3}{\color{quotemark}''}}}%
+ \end{picture}}%
+       \vspace{-0.5em}
+       \\\mbox{}\hfill\tempa
+   \par%r
+   \vspace{0.5em}%
+ \end{list}%
+ }%
+ \makeatother
+ %%%%********************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{document}
+
+\input{frontmatter/general}
+\maketitle
+\emptypage
+\dedicationpage
+
+\pagenumbering{roman}\setcounter{page}{1}
+\tableofcontents
+
+\abstractpage
+\listoftables\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\listoffigures\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\abbreviations
+
+
+
+\doublespacing
+
+\pagenumbering{arabic}\setcounter{chapter}{0}
+\input{chapters/chapter1.txt}
+\input{chapters/chapter2.txt}
+
+\begin{appendices}
+        \input{chapters/appendix-a.txt}
+\end{appendices}
+
+
+
+\singlespacing\clearpage
+\printbibliography\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+
+
+\clearpage
+\pagenumbering{roman}\setcounter{page}{8}
+\acknowledgments
+\declaration
+
+\end{document}
